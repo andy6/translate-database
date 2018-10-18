@@ -25,6 +25,8 @@ COMMENT ON COLUMN technology.t_revision_time.id IS 'Table identifier.';
 COMMENT ON COLUMN technology.t_revision_time.supplier IS 'Supplier of revision.';
 COMMENT ON COLUMN technology.t_revision_time.description IS 'Description of revision.';
 COMMENT ON COLUMN technology.t_revision_time.date IS 'Date of revision.';
+COMMENT ON COLUMN technology.t_revision_time.passed IS 'If revision passed.';
+--rollback DROP TABLE IF EXISTS technology.t_revision_time;
 
 DROP TRIGGER IF EXISTS tb_revision_time_timestamp ON technology.t_revision_time;
 CREATE TRIGGER tb_revision_time_timestamp
@@ -33,3 +35,4 @@ CREATE TRIGGER tb_revision_time_timestamp
   FOR EACH ROW
 EXECUTE PROCEDURE main.proc_timestamp();
 COMMENT ON TRIGGER tb_revision_time_timestamp ON technology.t_revision_time IS 'Trigger calls timestamp procedure.';
+--rollback DROP TRIGGER IF EXISTS tb_revision_time_timestamp ON technology.t_revision_time;

@@ -3,7 +3,7 @@
 --comment Creates a new table 'main.t_log' in the current database.
 
 -- Table main.t_log
--- DROP TABLE IF EXISTS main.t_log;
+-- DROP TABLE IF EXISTS main.t_log CASCADE;
 CREATE TABLE IF NOT EXISTS main.t_log (
   id serial PRIMARY KEY NOT NULL,
   log_type text NOT NULL,

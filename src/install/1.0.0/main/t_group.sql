@@ -2,7 +2,7 @@
 --changeset Andy:1.0.0 (splitStatements:false endDelimiter:;) dbms:postgresql,h2
 --comment Creates a new table 'main.t_group' in the current database.
 
--- Table main. groups
+-- Table main.t_group
 -- DROP TABLE IF EXISTS main.t_group CASCADE;
 CREATE TABLE IF NOT EXISTS main.t_group (
   id serial PRIMARY KEY NOT NULL,

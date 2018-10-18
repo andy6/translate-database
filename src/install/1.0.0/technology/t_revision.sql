@@ -24,6 +24,16 @@ COMMENT ON COLUMN technology.t_revision.id_association IS 'Foreign key to table 
 COMMENT ON COLUMN technology.t_revision.subject IS 'Subject of revision.';
 COMMENT ON COLUMN technology.t_revision.description IS 'Description of revision.';
 COMMENT ON COLUMN technology.t_revision.repeat_after IS 'Repeat revision over time [].';
+--rollback DROP TABLE IF EXISTS technology.t_revision;
+
+DROP TRIGGER IF EXISTS tb_revision_timestamp ON technology.t_revision_time;
+CREATE TRIGGER tb_revision_timestamp
+  BEFORE INSERT OR UPDATE
+  ON technology.t_revision_time
+  FOR EACH ROW
+EXECUTE PROCEDURE main.proc_timestamp();
+COMMENT ON TRIGGER tb_revision_timestamp ON technology.t_revision_time IS 'Trigger calls timestamp procedure.';
+--rollback DROP TRIGGER IF EXISTS tb_revision_timestamp ON technology.t_revision_time;
 
 
 

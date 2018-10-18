@@ -29,11 +29,13 @@ COMMENT ON COLUMN reality.t_unit_user.ownership IS 'Unit ownership.';
 COMMENT ON COLUMN reality.t_unit_user.part IS 'Part of unit.';
 COMMENT ON COLUMN reality.t_unit_user.ts_created IS 'Timestamp of created.';
 COMMENT ON COLUMN reality.t_unit_user.ts_changed IS 'Timestamp of changed.';
+--rollback DROP TABLE IF EXISTS reality.t_unit_user;
 
-DROP TRIGGER IF EXISTS tb_flat_user_timestamp ON reality.t_unit_user;
-CREATE TRIGGER tb_flat_user_timestamp
+DROP TRIGGER IF EXISTS tb_unit_user_timestamp ON reality.t_unit_user;
+CREATE TRIGGER tb_unit_user_timestamp
   BEFORE INSERT OR UPDATE
   ON reality.t_unit_user
   FOR EACH ROW
 EXECUTE PROCEDURE main.proc_timestamp();
-COMMENT ON TRIGGER tb_flat_user_timestamp ON reality.t_unit_user IS 'Trigger calls timestamp procedure.';
+COMMENT ON TRIGGER tb_unit_user_timestamp ON reality.t_unit_user IS 'Trigger calls timestamp procedure.';
+--rollback DROP TRIGGER IF EXISTS tb_unit_user_timestamp ON reality.t_unit_user;

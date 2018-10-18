@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS reality.t_building (
   built_date date,
   street character varying(255) NOT NULL,
   city character varying(255) NOT NULL,
-  zip integer NOT NULL,
+  zip smallint NOT NULL,
   country character varying(255) NOT NULL,
 
   ts_created timestamp with time zone,
@@ -32,7 +32,9 @@ COMMENT ON COLUMN reality.t_building.built_date IS 'Built date.';
 COMMENT ON COLUMN reality.t_building.street IS 'Street.';
 COMMENT ON COLUMN reality.t_building.city IS 'City.';
 COMMENT ON COLUMN reality.t_building.zip IS 'ZIP.';
-COMMENT ON COLUMN reality.t_building.country IS 'Country.';
+COMMENT ON COLUMN reality.t_building.ts_created IS 'Timestamp of building created.';
+COMMENT ON COLUMN reality.t_building.ts_changed IS 'Timestamp of building changed.';
+--rollback DROP TABLE IF EXISTS reality.t_building;
 
 DROP TRIGGER IF EXISTS tb_building_timestamp ON reality.t_building;
 CREATE TRIGGER tb_building_timestamp
@@ -41,3 +43,4 @@ CREATE TRIGGER tb_building_timestamp
   FOR EACH ROW
 EXECUTE PROCEDURE main.proc_timestamp();
 COMMENT ON TRIGGER tb_building_timestamp ON reality.t_building IS 'Trigger calls timestamp procedure.';
+--rollback DROP TRIGGER IF EXISTS tb_building_timestamp ON reality.t_building;

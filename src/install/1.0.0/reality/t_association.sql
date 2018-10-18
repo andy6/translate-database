@@ -22,6 +22,7 @@ COMMENT ON COLUMN reality.t_association.ts_to IS 'Timestamp to.';
 COMMENT ON COLUMN reality.t_association.valid IS 'Validation check.';
 COMMENT ON COLUMN reality.t_association.ts_created IS 'Timestamp of association created.';
 COMMENT ON COLUMN reality.t_association.ts_changed IS 'Timestamp of association changed.';
+--rollback DROP TABLE IF EXISTS reality.t_association;
 
 DROP TRIGGER IF EXISTS tb_association_timestamp ON reality.t_association;
 CREATE TRIGGER tb_association_timestamp
@@ -30,3 +31,4 @@ CREATE TRIGGER tb_association_timestamp
   FOR EACH ROW
 EXECUTE PROCEDURE main.proc_timestamp();
 COMMENT ON TRIGGER tb_association_timestamp ON reality.t_association IS 'Trigger calls timestamp procedure.';
+--rollback DROP TRIGGER IF EXISTS tb_association_timestamp ON reality.t_association;
