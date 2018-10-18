@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    
+	<changeSet author="Andy" id="initial" >
+		<tagDatabase tag="initial"/>
+	</changeSet>
+	
+	<include file="1.0.0/main/main.xml" relativeToChangelogFile="true" />
+	<include file="1.0.0/economy/economy.xml" relativeToChangelogFile="true" />
+	<include file="1.0.0/reality/reality.xml" relativeToChangelogFile="true" />
+	<include file="1.0.0/technology/technology.xml" relativeToChangelogFile="true" />
+	
+	<changeSet author="Andy" id="1.0.0" >
+		<tagDatabase tag="version_1.0.0"/>
+	</changeSet>
+	
+</databaseChangeLog>
