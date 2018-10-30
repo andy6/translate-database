@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS technology.t_revision_time (
   ts_changed timestamp with time zone,
 
   CONSTRAINT fk_revision_time_id_revision FOREIGN KEY (id_revision)
-  REFERENCES technology.t_revision (id) MATCH SIMPLE
+  REFERENCES technology.t_revision (id) 
   ON UPDATE NO ACTION ON DELETE CASCADE
 );
 COMMENT ON TABLE technology.t_revision_time IS 'Table stores dates of revisions.';
@@ -28,6 +28,8 @@ COMMENT ON COLUMN technology.t_revision_time.date IS 'Date of revision.';
 COMMENT ON COLUMN technology.t_revision_time.passed IS 'If revision passed.';
 --rollback DROP TABLE IF EXISTS technology.t_revision_time;
 
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql
+--comment Creates a trigger on table 'technology.t_revision_time'.
 DROP TRIGGER IF EXISTS tb_revision_time_timestamp ON technology.t_revision_time;
 CREATE TRIGGER tb_revision_time_timestamp
   BEFORE INSERT OR UPDATE

@@ -20,6 +20,8 @@ COMMENT ON COLUMN main.t_group.ts_created IS 'Timestamp of group created.';
 COMMENT ON COLUMN main.t_group.ts_changed IS 'Timestamp of group changed.';
 -- rollback DROP TABLE IF EXISTS main.t_group;
 
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql
+--comment Creates a trigger on table 'main.t_group'.
 DROP TRIGGER IF EXISTS tb_group_timestamp ON main.t_group;
 CREATE TRIGGER tb_group_timestamp
   BEFORE INSERT OR UPDATE

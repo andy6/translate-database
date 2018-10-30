@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS main.t_log (
   detail_info character varying,
   ts_created timestamp with time zone,
   CONSTRAINT fk_t_log_id_user_created FOREIGN KEY (id_user_created)
-  REFERENCES main.t_user (id) MATCH SIMPLE
+  REFERENCES main.t_user (id) 
   ON UPDATE NO ACTION ON DELETE SET NULL
 );
 COMMENT ON TABLE main.t_log IS 'Table stores logs.';
@@ -27,6 +27,8 @@ COMMENT ON COLUMN main.t_log.detail_info IS 'detail informations.';
 COMMENT ON COLUMN main.t_log.ts_created IS 'Timestamp created.';
 -- rollback DROP TABLE IF EXISTS main.t_log;
 
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql
+--comment Creates a trigger on table 'main.t_log'.
 DROP TRIGGER IF EXISTS tb_log_timestamp ON main.t_log;
 CREATE TRIGGER tb_log_timestamp
   BEFORE INSERT OR UPDATE

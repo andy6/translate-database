@@ -24,6 +24,8 @@ COMMENT ON COLUMN reality.t_association.ts_created IS 'Timestamp of association 
 COMMENT ON COLUMN reality.t_association.ts_changed IS 'Timestamp of association changed.';
 --rollback DROP TABLE IF EXISTS reality.t_association;
 
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql
+--comment Creates a trigger on table 'reality.t_association'.
 DROP TRIGGER IF EXISTS tb_association_timestamp ON reality.t_association;
 CREATE TRIGGER tb_association_timestamp
   BEFORE INSERT OR UPDATE

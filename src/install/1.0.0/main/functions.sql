@@ -1,5 +1,5 @@
 --liquibase formatted sql
---changeset Andy:1.0.0 (splitStatements:false endDelimiter:;) dbms:postgresql,h2
+--changeset Andy:1.0.0 (splitStatements:false endDelimiter:;) dbms:postgresql
 --comment Creates a new functions in schema 'main'.
 
 -- Function main.proc_timestamp

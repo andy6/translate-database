@@ -5,6 +5,7 @@
     
 	
 	<include file="insert/main/main.xml" relativeToChangelogFile="true" />
+	<include file="insert/reality/reality.xml" relativeToChangelogFile="true" />
 	
 	<changeSet author="Andy" id="data" >
 		<tagDatabase tag="data"/>

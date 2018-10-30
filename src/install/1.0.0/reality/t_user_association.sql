@@ -13,14 +13,17 @@ CREATE TABLE IF NOT EXISTS reality.t_user_association (
   ts_changed timestamp with time zone,
 
   CONSTRAINT fk_t_user_association_id_association FOREIGN KEY (id_association)
-  REFERENCES reality.t_association (id) MATCH SIMPLE
+  REFERENCES reality.t_association (id)
   ON UPDATE NO ACTION ON DELETE CASCADE,
   CONSTRAINT fk_t_user_association_id_user FOREIGN KEY (id_user)
-  REFERENCES main.t_user (id) MATCH SIMPLE
-  ON UPDATE NO ACTION ON DELETE CASCADE
+  REFERENCES main.t_user (id) 
+  ON UPDATE NO ACTION ON DELETE CASCADE,
+  CONSTRAINT t_user_association_id_user_id_association_key UNIQUE (id_user, id_association)
 );
 COMMENT ON TABLE reality.t_user_association IS 'Table .';
 
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql
+--comment Creates a trigger on table 'reality.t_user_association'.
 DROP TRIGGER IF EXISTS tb_user_association_timestamp ON reality.t_user_association;
 CREATE TRIGGER tb_user_association_timestamp
   BEFORE INSERT OR UPDATE

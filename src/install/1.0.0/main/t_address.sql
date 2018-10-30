@@ -30,6 +30,8 @@ COMMENT ON COLUMN main.t_address.ts_created IS 'Timestamp of address created.';
 COMMENT ON COLUMN main.t_address.ts_changed IS 'Timestamp of address changed.';
 -- rollback DROP TABLE IF EXISTS main.t_address;
 
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql
+--comment Creates a trigger on table 'main.t_address'.
 DROP TRIGGER IF EXISTS tb_address_timestamp ON main.t_address;
 CREATE TRIGGER tb_address_timestamp
   BEFORE INSERT OR UPDATE

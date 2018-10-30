@@ -12,11 +12,11 @@ CREATE TABLE IF NOT EXISTS main.t_group_permission (
   ts_created timestamp with time zone,
   ts_changed timestamp with time zone,
 
-  CONSTRAINT fk_t_user_group_id_group FOREIGN KEY (id_group)
-  REFERENCES main.t_group (id) MATCH SIMPLE
+  CONSTRAINT fk_t_group_permission_id_group FOREIGN KEY (id_group)
+  REFERENCES main.t_group (id) 
   ON UPDATE NO ACTION ON DELETE CASCADE,
   CONSTRAINT fk_t_group_permission_id_permission FOREIGN KEY (id_permission)
-  REFERENCES main.t_permission (id) MATCH SIMPLE
+  REFERENCES main.t_permission (id) 
   ON UPDATE NO ACTION ON DELETE CASCADE
 );
 COMMENT ON TABLE main.t_group_permission IS 'Relation table of groups and permission.';
@@ -25,6 +25,8 @@ COMMENT ON COLUMN main.t_group_permission.id_group IS 'Group identifier.';
 COMMENT ON COLUMN main.t_group_permission.id_permission IS 'Permission identifier.';
 -- rollback DROP TABLE IF EXISTS main.t_group_permission;
 
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql
+--comment Creates a trigger on table 'main.t_group_permission'.
 DROP TRIGGER IF EXISTS tb_group_permission_timestamp ON main.t_group_permission;
 CREATE TRIGGER tb_group_permission_timestamp
   BEFORE INSERT OR UPDATE

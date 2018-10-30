@@ -5,7 +5,7 @@
 INSERT INTO reality.t_user_association (id_user, id_association)
   VALUES (
   (SELECT id FROM main.t_user WHERE email = 'andy@naentou.cz'), 
-  (SELECT id FROM reality.association WHERE name = 'SVJ Údolní 54, Brno'))
-  ON CONFLICT (name) DO NOTHING
+  (SELECT id FROM reality.t_association WHERE name = 'SVJ Údolní 54, Brno'))
+  ON CONFLICT (id_user, id_association) DO NOTHING
 --rollback DELETE FROM reality.t_association WHERE name = 'Předseda výboru'
 

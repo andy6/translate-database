@@ -20,6 +20,8 @@ COMMENT ON COLUMN main.t_permission.ts_created IS 'Timestamp of permission creat
 COMMENT ON COLUMN main.t_permission.ts_changed IS 'Timestamp of permission changed.';
 -- rollback DROP TABLE IF EXISTS main.t_permission;
 
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql
+--comment Creates a trigger on table 'main.t_permission'.
 DROP TRIGGER IF EXISTS tb_permission_timestamp ON main.t_permission;
 CREATE TRIGGER tb_permission_timestamp
   BEFORE INSERT OR UPDATE

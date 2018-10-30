@@ -30,6 +30,8 @@ COMMENT ON COLUMN main.t_user.ts_created IS 'Timestamp of user created.';
 COMMENT ON COLUMN main.t_user.ts_changed IS 'Timestamp of user changed.';
 -- rollback DROP TABLE IF EXISTS main.t_user;
 
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql
+--comment Creates a trigger on table 'main.t_user'.
 DROP TRIGGER IF EXISTS tb_user_timestamp ON main.t_user;
 CREATE TRIGGER tb_user_timestamp
   BEFORE INSERT OR UPDATE

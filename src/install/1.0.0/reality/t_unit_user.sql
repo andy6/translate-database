@@ -1,5 +1,5 @@
 --liquibase formatted sql
---changeset Andy:1.0.0 (splitStatements:false endDelimiter:;) dbms:postgresql,h2
+--changeset Andy:1.0.0 (splitStatements:false endDelimiter:;) dbms:postgresql
 --comment Creates a new table 'reality.t_unit_user' in the current database.
 
 -- Table reality.t_unit_user
@@ -14,12 +14,13 @@ CREATE TABLE IF NOT EXISTS reality.t_unit_user (
   ts_created timestamp with time zone,
   ts_changed timestamp with time zone,
 
-  CONSTRAINT fk_t_flat_user_id_flat FOREIGN KEY (id_unit)
-  REFERENCES reality.t_unit (id) MATCH SIMPLE
+  CONSTRAINT fk_t_unit_user_id_unir FOREIGN KEY (id_unit)
+  REFERENCES reality.t_unit (id) 
   ON UPDATE NO ACTION ON DELETE CASCADE,
-  CONSTRAINT fk_t_user_association_id_user FOREIGN KEY (id_user)
-  REFERENCES main.t_user (id) MATCH SIMPLE
-  ON UPDATE NO ACTION ON DELETE CASCADE
+  CONSTRAINT fk_t_unit_user_id_user FOREIGN KEY (id_user)
+  REFERENCES main.t_user (id) 
+  ON UPDATE NO ACTION ON DELETE CASCADE,
+  CONSTRAINT t_unit_user_id_user_label_key UNIQUE (id_unit, id_user)
 );
 COMMENT ON TABLE reality.t_unit_user IS 'Relation table of units and users.';
 COMMENT ON COLUMN reality.t_unit_user.id IS 'Table identifier.';
@@ -31,6 +32,7 @@ COMMENT ON COLUMN reality.t_unit_user.ts_created IS 'Timestamp of created.';
 COMMENT ON COLUMN reality.t_unit_user.ts_changed IS 'Timestamp of changed.';
 --rollback DROP TABLE IF EXISTS reality.t_unit_user;
 
+
 DROP TRIGGER IF EXISTS tb_unit_user_timestamp ON reality.t_unit_user;
 CREATE TRIGGER tb_unit_user_timestamp
   BEFORE INSERT OR UPDATE
@@ -39,3 +41,24 @@ CREATE TRIGGER tb_unit_user_timestamp
 EXECUTE PROCEDURE main.proc_timestamp();
 COMMENT ON TRIGGER tb_unit_user_timestamp ON reality.t_unit_user IS 'Trigger calls timestamp procedure.';
 --rollback DROP TRIGGER IF EXISTS tb_unit_user_timestamp ON reality.t_unit_user;
+
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:h2
+--comment Creates a trigger on table 'reality.t_unit_user'.
+CREATE TABLE IF NOT EXISTS reality.t_unit_user (
+  id serial PRIMARY KEY NOT NULL,
+  id_unit integer NOT NULL,
+  id_user integer NOT NULL,
+  ownership ENUM ('PRIVATE', 'COOPERATIVE', 'RENTED', 'STATE') DEFAULT 'PRIVATE',
+  part smallint DEFAULT 1,
+
+  ts_created timestamp with time zone,
+  ts_changed timestamp with time zone,
+
+  CONSTRAINT fk_t_unit_user_id_unir FOREIGN KEY (id_unit)
+  REFERENCES reality.t_unit (id) 
+  ON UPDATE NO ACTION ON DELETE CASCADE,
+  CONSTRAINT fk_t_unit_user_id_user FOREIGN KEY (id_user)
+  REFERENCES main.t_user (id) 
+  ON UPDATE NO ACTION ON DELETE CASCADE,
+  CONSTRAINT t_unit_user_id_unit_id_user_key UNIQUE (id_unit, id_user)
+);

@@ -13,14 +13,14 @@ CREATE TABLE IF NOT EXISTS reality.t_building (
   built_date date,
   street character varying(255) NOT NULL,
   city character varying(255) NOT NULL,
-  zip smallint NOT NULL,
+  zip integer NOT NULL,
   country character varying(255) NOT NULL,
 
   ts_created timestamp with time zone,
   ts_changed timestamp with time zone,
 
   CONSTRAINT fk_t_building_id_association FOREIGN KEY (id_association)
-  REFERENCES reality.t_association (id) MATCH SIMPLE
+  REFERENCES reality.t_association (id)
   ON UPDATE NO ACTION ON DELETE CASCADE
 );
 COMMENT ON TABLE reality.t_building IS 'Table stores buildings.';
@@ -36,6 +36,8 @@ COMMENT ON COLUMN reality.t_building.ts_created IS 'Timestamp of building create
 COMMENT ON COLUMN reality.t_building.ts_changed IS 'Timestamp of building changed.';
 --rollback DROP TABLE IF EXISTS reality.t_building;
 
+--changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql
+--comment Creates a trigger on table 'reality.t_building'.
 DROP TRIGGER IF EXISTS tb_building_timestamp ON reality.t_building;
 CREATE TRIGGER tb_building_timestamp
   BEFORE INSERT OR UPDATE

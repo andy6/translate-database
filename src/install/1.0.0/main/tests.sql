@@ -1,5 +1,5 @@
 --liquibase formatted sql
---changeset Andy:tests (splitStatements:false endDelimiter:;) dbms:postgresql,h2
+--changeset Andy:tests (splitStatements:false endDelimiter:;) dbms:postgresql
 --comment Creates test functions on schema 'main'.
 
 -- Tests on schema main.
