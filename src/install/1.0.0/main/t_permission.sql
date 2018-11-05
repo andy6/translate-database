@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS main.t_permission (
   id serial PRIMARY KEY NOT NULL,
   name character varying(50) UNIQUE NOT NULL,
   description character varying(255) NOT NULL,
+  enabled boolean DEFAULT true,
 
   ts_created timestamp with time zone,
   ts_changed timestamp with time zone
@@ -16,6 +17,7 @@ COMMENT ON TABLE main.t_permission IS 'Table stores permissions of groups.';
 COMMENT ON COLUMN main.t_permission.id IS 'Table identifier.';
 COMMENT ON COLUMN main.t_permission.name IS 'Name of permission.';
 COMMENT ON COLUMN main.t_permission.description IS 'Description of permission.';
+COMMENT ON COLUMN main.t_permission.enabled IS 'Enable flag.';
 COMMENT ON COLUMN main.t_permission.ts_created IS 'Timestamp of permission created.';
 COMMENT ON COLUMN main.t_permission.ts_changed IS 'Timestamp of permission changed.';
 -- rollback DROP TABLE IF EXISTS main.t_permission;

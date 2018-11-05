@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS main.t_group (
   id serial PRIMARY KEY NOT NULL,
   name character varying(50) UNIQUE NOT NULL,
   description character varying(255) NOT NULL,
+  enabled boolean DEFAULT true,
 
   ts_created timestamp with time zone,
   ts_changed timestamp with time zone
@@ -16,6 +17,7 @@ COMMENT ON TABLE main.t_group IS 'Table stores groups of users.';
 COMMENT ON COLUMN main.t_group.id IS 'Table identifier.';
 COMMENT ON COLUMN main.t_group.name IS 'Name of group.';
 COMMENT ON COLUMN main.t_group.description IS 'Description of group.';
+COMMENT ON COLUMN main.t_group.enabled IS 'Enable flag.';
 COMMENT ON COLUMN main.t_group.ts_created IS 'Timestamp of group created.';
 COMMENT ON COLUMN main.t_group.ts_changed IS 'Timestamp of group changed.';
 -- rollback DROP TABLE IF EXISTS main.t_group;
