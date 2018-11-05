@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS main.t_user (
   password character varying(50) NOT NULL,
   first_name character varying(50),
   last_name character varying(50),
-  disabled boolean DEFAULT false,
+  enabled boolean DEFAULT true,
   ts_last_login timestamp with time zone,
 
   ts_created timestamp with time zone,
@@ -24,7 +24,7 @@ COMMENT ON COLUMN main.t_user.email IS 'E-mail address.';
 COMMENT ON COLUMN main.t_user.password IS 'Password.';
 COMMENT ON COLUMN main.t_user.first_name IS 'First name.';
 COMMENT ON COLUMN main.t_user.last_name IS 'Surname.';
-COMMENT ON COLUMN main.t_user.disabled IS 'Check disabled.';
+COMMENT ON COLUMN main.t_user.enabled IS 'Enable flag.';
 COMMENT ON COLUMN main.t_user.ts_last_login IS 'Timestamp of last login.';
 COMMENT ON COLUMN main.t_user.ts_created IS 'Timestamp of user created.';
 COMMENT ON COLUMN main.t_user.ts_changed IS 'Timestamp of user changed.';
