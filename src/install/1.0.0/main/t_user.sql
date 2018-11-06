@@ -6,7 +6,6 @@
 -- DROP TABLE IF EXISTS main.t_user CASCADE;
 CREATE TABLE IF NOT EXISTS main.t_user (
   id serial PRIMARY KEY NOT NULL,
-  sso_id int UNIQUE NOT NULL,
   email character varying(50) UNIQUE NOT NULL,
   password character varying(250) NOT NULL,
   first_name character varying(50),
@@ -19,7 +18,6 @@ CREATE TABLE IF NOT EXISTS main.t_user (
 );
 COMMENT ON TABLE main.t_user IS 'Table stores user accounts.';
 COMMENT ON COLUMN main.t_user.id IS 'Table identifier.';
-COMMENT ON COLUMN main.t_user.sso_id IS 'User identifier.';
 COMMENT ON COLUMN main.t_user.email IS 'E-mail address.';
 COMMENT ON COLUMN main.t_user.password IS 'Password.';
 COMMENT ON COLUMN main.t_user.first_name IS 'First name.';
