@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS main.t_user (
   id serial PRIMARY KEY NOT NULL,
   sso_id int UNIQUE NOT NULL,
   email character varying(50) UNIQUE NOT NULL,
-  password character varying(50) NOT NULL,
+  password character varying(250) NOT NULL,
   first_name character varying(50),
   last_name character varying(50),
   enabled boolean DEFAULT true,

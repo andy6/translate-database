@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS reality.t_association (
   name character varying(255) UNIQUE NOT NULL,
   ts_from timestamp with time zone,
   ts_to timestamp with time zone,
-  valid boolean DEFAULT false,
+  enabled boolean DEFAULT true,
 
   ts_created timestamp with time zone,
   ts_changed timestamp with time zone
@@ -19,7 +19,7 @@ COMMENT ON COLUMN reality.t_association.id IS 'Table identifier.';
 COMMENT ON COLUMN reality.t_association.name IS 'Unique name of association.';
 COMMENT ON COLUMN reality.t_association.ts_from IS 'Timestamp from.';
 COMMENT ON COLUMN reality.t_association.ts_to IS 'Timestamp to.';
-COMMENT ON COLUMN reality.t_association.valid IS 'Validation check.';
+COMMENT ON COLUMN reality.t_association.enabled IS 'Enable flag.';
 COMMENT ON COLUMN reality.t_association.ts_created IS 'Timestamp of association created.';
 COMMENT ON COLUMN reality.t_association.ts_changed IS 'Timestamp of association changed.';
 --rollback DROP TABLE IF EXISTS reality.t_association;
