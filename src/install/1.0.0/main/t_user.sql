@@ -6,15 +6,15 @@
 -- DROP TABLE IF EXISTS main.t_user CASCADE;
 CREATE TABLE IF NOT EXISTS main.t_user (
   id serial PRIMARY KEY NOT NULL,
-  email character varying(50) UNIQUE NOT NULL,
-  password character varying(250) NOT NULL,
-  first_name character varying(50),
-  last_name character varying(50),
-  enabled boolean DEFAULT true,
-  ts_last_login timestamp with time zone,
+  email CHARACTER VARYING(100) UNIQUE NOT NULL,
+  password CHARACTER VARYING(250) NOT NULL,
+  first_name CHARACTER VARYING(50),
+  last_name CHARACTER VARYING(50),
+  enabled BOOLEAN DEFAULT true NOT NULL,
+  ts_last_login TIMESTAMP WITH TIME ZONE,
 
-  ts_created timestamp with time zone,
-  ts_changed timestamp with time zone
+  ts_created TIMESTAMP WITH TIME ZONE,
+  ts_changed TIMESTAMP WITH TIME ZONE
 );
 COMMENT ON TABLE main.t_user IS 'Table stores user accounts.';
 COMMENT ON COLUMN main.t_user.id IS 'Table identifier.';

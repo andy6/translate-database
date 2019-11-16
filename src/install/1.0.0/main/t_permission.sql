@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS main.t_permission (
   id serial PRIMARY KEY NOT NULL,
   name character varying(50) UNIQUE NOT NULL,
   description character varying(255) NOT NULL,
-  enabled boolean DEFAULT true,
+  enabled boolean NOT NULL DEFAULT true,
 
   ts_created timestamp with time zone,
   ts_changed timestamp with time zone

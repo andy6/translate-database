@@ -8,9 +8,6 @@
 	</changeSet>
 	
 	<include file="1.0.0/main/main.xml" relativeToChangelogFile="true" />
-	<include file="1.0.0/economy/economy.xml" relativeToChangelogFile="true" />
-	<include file="1.0.0/reality/reality.xml" relativeToChangelogFile="true" />
-	<include file="1.0.0/technology/technology.xml" relativeToChangelogFile="true" />
 	
 	<changeSet author="Andy" id="1.0.0" >
 		<tagDatabase tag="version_1.0.0"/>

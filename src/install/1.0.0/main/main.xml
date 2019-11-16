@@ -18,5 +18,7 @@
 	<include file="t_group_permission.sql" relativeToChangelogFile="true" />
 	<include file="t_log.sql" relativeToChangelogFile="true" />
 	<include file="t_address.sql" relativeToChangelogFile="true" />
+	<include file="t_profile.sql" relativeToChangelogFile="true" />
+	<include file="t_service.sql" relativeToChangelogFile="true" />
 	
 </databaseChangeLog>
