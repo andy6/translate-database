@@ -55,5 +55,3 @@ fi
 JAVA_OPTS="${JAVA_OPTS-}"
 
 java -cp "$CP" $JAVA_OPTS liquibase.integration.commandline.Main ${1+"$@"}
-
-
