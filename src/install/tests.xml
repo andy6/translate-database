@@ -5,9 +5,6 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
     
 	<include file="1.0.0/main/tests.sql" relativeToChangelogFile="true" />
-	<!--<include file="1.0.0/economy/tests.sql" relativeToChangelogFile="true" />-->
-	<include file="1.0.0/reality/tests.sql" relativeToChangelogFile="true" />
-	<!--<include file="1.0.0/technology/tests.sql" relativeToChangelogFile="true" />-->
 	
 	<changeSet author="Andy" id="tests" >
 		<tagDatabase tag="tests"/>

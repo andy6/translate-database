@@ -6,11 +6,11 @@
 -- DROP TABLE IF EXISTS main.t_user_group CASCADE;
 CREATE TABLE IF NOT EXISTS main.t_user_group (
   id serial PRIMARY KEY NOT NULL,
-  id_user integer NOT NULL,
-  id_group integer NOT NULL,
+  id_user INTEGER NOT NULL,
+  id_group INTEGER NOT NULL,
 
-  ts_created timestamp with time zone,
-  ts_changed timestamp with time zone,
+  ts_created TIMESTAMP WITH TIME ZONE,
+  ts_changed TIMESTAMP WITH TIME ZONE
 
   CONSTRAINT fk_t_user_group_id_group FOREIGN KEY (id_group)
   REFERENCES main.t_group (id)
@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS main.t_user_group (
   REFERENCES main.t_user (id)
   ON UPDATE NO ACTION ON DELETE CASCADE
 );
+
 COMMENT ON TABLE main.t_user_group IS 'Relation table of users and groups.';
 COMMENT ON COLUMN main.t_user_group.id IS 'Table identifier.';
 COMMENT ON COLUMN main.t_user_group.id_user IS 'User identifier.';

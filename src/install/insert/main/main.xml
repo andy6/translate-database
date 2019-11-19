@@ -10,5 +10,10 @@
 	<include file="t_user_group.sql" relativeToChangelogFile="true" />
 	<include file="t_permission.sql" relativeToChangelogFile="true" />
 	<include file="t_group_permission.sql" relativeToChangelogFile="true" />
+	<include file="t_service.sql" relativeToChangelogFile="true" />
+	<include file="t_lang.sql" relativeToChangelogFile="true" />
+	<include file="t_profile.sql" relativeToChangelogFile="true" />
+	<include file="t_profile_service.sql" relativeToChangelogFile="true" />
+	<include file="t_profile_lang.sql" relativeToChangelogFile="true" />
 	
 </databaseChangeLog>

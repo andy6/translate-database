@@ -1,6 +1,6 @@
 --liquibase formatted sql
 --changeset Andy:1.0.0 (splitStatements:false endDelimiter:;) dbms:postgresql,h2
---comment Creates a new tables in schema 'main' in the current database.
+--comment Creates a new table 't_user' in schema 'main' in the current database.
 
 -- Table main.t_user
 -- DROP TABLE IF EXISTS main.t_user CASCADE;
@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS main.t_user (
   ts_created TIMESTAMP WITH TIME ZONE,
   ts_changed TIMESTAMP WITH TIME ZONE
 );
+
 COMMENT ON TABLE main.t_user IS 'Table stores user accounts.';
 COMMENT ON COLUMN main.t_user.id IS 'Table identifier.';
 COMMENT ON COLUMN main.t_user.email IS 'E-mail address.';
