@@ -7,7 +7,7 @@
 CREATE TABLE IF NOT EXISTS main.t_profile_lang (
   id serial PRIMARY KEY NOT NULL,
   id_profile INTEGER NOT NULL,
-  id_lang INTEGER NOT NULL,
+  id_lang CHARACTER VARYING(3) NOT NULL,
   
   CONSTRAINT fk_t_profile_lang_id_profile FOREIGN KEY (id_profile)
   REFERENCES main.t_profile (id) 

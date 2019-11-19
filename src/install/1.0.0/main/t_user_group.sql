@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS main.t_user_group (
   id_group INTEGER NOT NULL,
 
   ts_created TIMESTAMP WITH TIME ZONE,
-  ts_changed TIMESTAMP WITH TIME ZONE
+  ts_changed TIMESTAMP WITH TIME ZONE,
 
   CONSTRAINT fk_t_user_group_id_group FOREIGN KEY (id_group)
   REFERENCES main.t_group (id)

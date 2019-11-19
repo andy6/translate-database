@@ -7,7 +7,7 @@
 CREATE TABLE IF NOT EXISTS main.t_profile_service (
   id serial PRIMARY KEY NOT NULL,
   id_profile INTEGER NOT NULL,
-  id_service INTEGER NOT NULL,
+  id_service CHARACTER VARYING(32) NOT NULL,
   
   CONSTRAINT fk_t_profile_service_id_profile FOREIGN KEY (id_profile)
   REFERENCES main.t_profile (id) 
