@@ -23,5 +23,6 @@
 	<include file="t_lang.sql" relativeToChangelogFile="true" />
 	<include file="t_profile_service.sql" relativeToChangelogFile="true" />
 	<include file="t_profile_lang.sql" relativeToChangelogFile="true" />
-	
+	<include file="t_inquiry.sql" relativeToChangelogFile="true" />
+
 </databaseChangeLog>
