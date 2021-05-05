@@ -13,7 +13,7 @@ if not %errorlevel%==0 (
 
 echo Inserting data into database... & @call ../liquibase/liquibase.bat --url=jdbc:%url% --password=postgres --username=postgres  --changeLogFile=install/insert.xml validate clearCheckSums update && echo Data was successfully inserted. & echo.
 if not %errorlevel%==0 (
- 		set /p input=Stisknete Enter pro ukonceni
- 		exit 1
+	set /p input=Stisknete Enter pro ukonceni
+	exit 1
 )
 
