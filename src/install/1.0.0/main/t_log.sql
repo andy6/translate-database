@@ -1,6 +1,6 @@
 --liquibase formatted sql
 --changeset Andy:1.0.0 (splitStatements:false endDelimiter:;) dbms:postgresql,h2
---comment Creates a new table 'main.t_log' in the current database.
+--comment Creates a new table 'main.t_log' in a current database.
 
 -- Table main.t_log
 -- DROP TABLE IF EXISTS main.t_log CASCADE;
@@ -13,18 +13,20 @@ CREATE TABLE IF NOT EXISTS main.t_log (
   id_user_created integer,
   detail_info character varying,
   ts_created timestamp with time zone,
+  ts_changed timestamp with time zone,
   CONSTRAINT fk_t_log_id_user_created FOREIGN KEY (id_user_created)
   REFERENCES main.t_user (id) 
   ON UPDATE NO ACTION ON DELETE SET NULL
 );
 COMMENT ON TABLE main.t_log IS 'Table stores logs.';
 COMMENT ON COLUMN main.t_log.id IS 'Table identifier.';
-COMMENT ON COLUMN main.t_log.log_type IS 'Type.';
-COMMENT ON COLUMN main.t_log.log_category IS 'Category.';
-COMMENT ON COLUMN main.t_log.text_value IS 'Text.';
+COMMENT ON COLUMN main.t_log.log_type IS 'Type of log (SUCCESS, ERROR etc.)';
+COMMENT ON COLUMN main.t_log.log_category IS 'Category of event.';
+COMMENT ON COLUMN main.t_log.text_value IS 'Log message.';
 COMMENT ON COLUMN main.t_log.id_user_created IS 'Identifier of user.';
-COMMENT ON COLUMN main.t_log.detail_info IS 'detail informations.';
-COMMENT ON COLUMN main.t_log.ts_created IS 'Timestamp created.';
+COMMENT ON COLUMN main.t_log.detail_info IS 'Log description.';
+COMMENT ON COLUMN main.t_log.ts_created IS 'Time of log creation.';
+COMMENT ON COLUMN main.t_log.ts_changed IS 'Time of log updation.';
 -- rollback DROP TABLE IF EXISTS main.t_log;
 
 --changeset Andy:1.0.1 (splitStatements:false endDelimiter:;) dbms:postgresql

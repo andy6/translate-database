@@ -53,7 +53,7 @@ BEGIN
   _log_type = 'SUCCESS';
   _log_category = 'LOGIN_USER';
   _message = 'User login "' || _email || '"';
-  SELECT u.id, u.disabled, u.password INTO _id_user, _valid, _hashedpass FROM main.t_user AS u WHERE email = _email;
+  SELECT u.id, u.enabled, u.password INTO _id_user, _valid, _hashedpass FROM main.t_user AS u WHERE email = _email;
 
   IF (_id_user IS NULL) THEN
     _log_type = 'ERROR';
